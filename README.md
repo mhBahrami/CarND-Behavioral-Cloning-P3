@@ -106,28 +106,28 @@ I used [NVIDIA architecture](http://images.nvidia.com/content/tegra/automotive/i
 
 ##### NVIDIA Architecture
 
-| Layer (type)     | Output Shape        | Parameter |
-| :--------------- | ------------------- | --------- |
-| Cropping2D       | (None, 90, 320, 3)  | 0         |
-| Lambda           | (None, 90, 320, 3)  | 0         |
-| Conv2D           | (None, 43, 158, 24) | 1824      |
-| SpatialDropout2D | (None, 43, 158, 24) | 0         |
-| Conv2D           | (None, 20, 77, 36)  | 21636     |
-| SpatialDropout2D | (None, 20, 77, 36)  | 0         |
-| Conv2D           | (None, 8, 37, 48)   | 43248     |
-| SpatialDropout2D | (None, 8, 37, 48)   | 0         |
-| Conv2D           | (None, 6, 35, 64)   | 27712     |
-| SpatialDropout2D | (None, 6, 35, 64)   | 0         |
-| Conv2D           | (None, 4, 33, 64)   | 36928     |
-| Flatten          | (None, 8448)        | 0         |
-| Dropout          | (None, 8448)        | 0         |
-| Dense            | (None, 100)         | 844900    |
-| Dropout          | (None, 100)         | 0         |
-| Dense            | (None, 50)          | 5050      |
-| Dropout          | (None, 50)          | 0         |
-| Dense            | (None, 10)          | 510       |
-| Dropout          | (None, 10)          | 0         |
-| Dense            | (None, 1)           | 11        |
+| Layer (type)                             | Output Shape        | Parameter |
+| :--------------------------------------- | ------------------- | --------- |
+| [Cropping2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L146) | (None, 90, 320, 3)  | 0         |
+| [Lambda](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L151) | (None, 90, 320, 3)  | 0         |
+| [Conv2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L197) | (None, 43, 158, 24) | 1824      |
+| [SpatialDropout2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L198) | (None, 43, 158, 24) | 0         |
+| [Conv2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L199) | (None, 20, 77, 36)  | 21636     |
+| [SpatialDropout2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L200) | (None, 20, 77, 36)  | 0         |
+| [Conv2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L201) | (None, 8, 37, 48)   | 43248     |
+| [SpatialDropout2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L202) | (None, 8, 37, 48)   | 0         |
+| [Conv2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L203) | (None, 6, 35, 64)   | 27712     |
+| [SpatialDropout2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L204) | (None, 6, 35, 64)   | 0         |
+| [Conv2D](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L205) | (None, 4, 33, 64)   | 36928     |
+| [Flatten](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L206) | (None, 8448)        | 0         |
+| [Dropout](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L207) | (None, 8448)        | 0         |
+| [Dense](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L208) | (None, 100)         | 844900    |
+| [Dropout](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L209) | (None, 100)         | 0         |
+| [Dense](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L210) | (None, 50)          | 5050      |
+| [Dropout](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L211) | (None, 50)          | 0         |
+| [Dense](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L212) | (None, 10)          | 510       |
+| [Dropout](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L213) | (None, 10)          | 0         |
+| [Dense](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L214) | (None, 1)           | 11        |
 
 > Total number of parameters for this model is 981,819 and all of them need to be be trained. [`nvidia_model()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L185) in `helper.py` builds and returns this model.
 
@@ -139,7 +139,7 @@ The model was trained and validated on different data sets to ensure that the mo
 
 #### 3. Model parameter tuning
 
-The model used an [`Adam()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L220) optimizer with a learning rate equal to **0.001**. The number of `epochs` is **10** and the `batch_size` is **32**. I used [`mse`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/model.py#L33) as loss function and set [`valid_split`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/model.py#L34) to **0.2**.
+The model used an [`Adam()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L220) optimizer with a learning rate equal to **0.001**. The number of [`epochs`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/model.py#L34) is **10** and the [`batch_size`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L227) is **32**. I used [`mse`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/model.py#L33) as loss function and set [`valid_split`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/model.py#L34) to **0.2**.
 
 #### 4. Appropriate training data
 
@@ -153,9 +153,9 @@ For details about how I created the training data, see the next section.
 
 My first step was to use a convolution neural network model similar to the NVIDIA. In order to gauge how well the model was working, I split the generated data set for images and steering angle data into a training (80%) and validation set (20%). 
 
-I used all data including center, left,  right, and flipped version of each to train the model. Training went well and model had a low MSE with a good convergence: `loss: 0.0147 - val_loss: 0.0135` (figure below).
+I used all data including center, left,  right, and flipped version of each to train the model. Training went well and model had a low MSE with a good convergence: `loss: 0.0320 - val_loss: 0.0254`.
 
-The final step was to run the simulator to see how well the car was driving around track one. But when I ran the simulator with `nvidia_model.h5`, the car stuck on the bridge (below images).
+The final step was to run the simulator to see how well the car was driving around track one. But when I ran the simulator with `nvidia_model.h5`, the car stuck on the bridge (*below images*).
 
 | First Try Running the Simulator | Second Try Running the Simulator |
 | ------------------------------- | -------------------------------- |
@@ -171,11 +171,11 @@ So, I dropped around 10,000 of them randomly (*below image - right*).  In this c
 | :--------------------------------------: | :-------------------------------: |
 |           ![alt text][image10]           |       ![alt text][image11]        |
 
-Moreover, I didn't used every image even after dropping. For each frame there is **3 different version** for center, left, and right camera. I only used one out of three for each frame randomly. The chance of picking center-camera frame was **50 percent** and the other 2 frames **25** percent  each.
+Moreover, I didn't used every image even after dropping. For each frame there is **3 different version** for center, left, and right camera. I only used one out of three for each frame randomly. The chance of picking center-camera frame was [**50 percent**](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L105) and the other 2 frames **25** percent  each ([here](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L111) & [here](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L117)).
 
 > Look at [`load_data_set()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L93) in `helper.py`.
 
-If the left-camera frame or the right-camera frame is selected the steering lane angel must be adjusted. I randomly selected a number between [`[0.20, 0.25]`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L79) Then, I added it to and subtracted it from the steering value for the left and right frames respectively. In addition, I flipped the selected image to data set by **50%** chance to data set. To calculate steering angle for flipped frame I only multiplied the original frame's steering value by `-1.0`.
+If the left-camera frame or the right-camera frame is selected the steering lane angel must be adjusted. I randomly selected a number between [`[0.20, 0.25]`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L79) Then, I added it to and subtracted it from the steering value for the left and right frames respectively. In addition, I flipped the selected image to data set by [**50%** chance](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L86) to data set. To calculate steering angle for flipped frame I only multiplied the original frame's steering value by [`-1.0`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L88).
 
 > Look at [`load_camera_data_set()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L69) in `helper.py`.
 
