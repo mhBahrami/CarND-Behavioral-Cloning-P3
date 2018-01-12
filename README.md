@@ -29,6 +29,14 @@
 
 3. [Creation of the Training Set & Training Process](#3-creation-of-the-training-set--training-process)
 
+[Recording and Building the Video](#recording-and-building-the-video)
+
+- [Recording Video in Autonomous Mode](#recording-video-in-autonomous-mode)
+
+- [Using video.py](#using-videopy)
+
+- [The video](#the-video)
+
 [License](#license)
 
 ---
