@@ -56,7 +56,7 @@ The goals / steps of this project are the following:
 - Summarize the results with a written report
 
   [//]: # "Image References"
-  [image1]: ./res/msel_vs_epoch_nvidia_model.png "MSE Loss for LeNet Model with 30% Chance to Add Augmented Data Set"
+  [image1]: ./res/msel_vs_epoch_nvidia_model.png "MSE Loss for LeNet Model with 50% Chance to Add Augmented Data Set"
   [image2]: ./res/lenet_model_bridge_stock_30_1.png "First Try Running the Simulator"
   [image3]: ./res/lenet_model_bridge_stock_30_2.png "Second Try Running the Simulator"
   [image4]: ./res/center_lane_driving.jpg "Center Lane Driving"
