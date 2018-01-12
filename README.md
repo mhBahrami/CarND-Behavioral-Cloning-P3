@@ -1,10 +1,39 @@
 # **Behavioral Cloning**
 
-[TOC]
+### Table of Contents
+[Behavioral Cloning Project](#behavioral-cloning-project)
 
-------
+[Files Submitted & Code Quality](files-submitted--code-quality)
 
-**Behavioral Cloning Project**
+1. [Submission includes all required files and can be used to run the simulator in autonomous mode](1-submission-includes-all-required-files-and-can-be-used-to-run-the-simulator-in-autonomous-mode)
+
+2. [Submission includes functional code](2-submission-includes-functional-code)
+
+3. [Submission code is usable and readable](3-submission-code-is-usable-and-readable)
+
+[Model Architecture and Training Strategy](model-architecture-and-training-strategy)
+
+1. [Model architecture](1-model-architecture)
+
+2. [Reduce overfitting in the model](2-reduce-overfitting-in-the-model)
+
+3. [Model parameter tuning](3-model-parameter-tuning)
+
+4. [Appropriate training data](4-appropriate-training-data)
+
+[Model Architecture and Training Strategy](model-architecture-and-training-strategy-1)
+
+1. [Solution Design Approach](1-solution-design-approach)
+
+2. [Final Model Architecture](2-final-model-architecture)
+
+3. [Creation of the Training Set & Training Process](3-creation-of-the-training-set--training-process)
+
+[License](license)
+
+---
+
+### Behavioral Cloning Project
 
 The goals / steps of this project are the following:
 
