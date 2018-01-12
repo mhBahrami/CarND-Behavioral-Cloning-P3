@@ -22,15 +22,24 @@ def unzip(path_to_zip_file, directory_to_extract_to='.'):
     
     
 def read_csv_df(path='./data/driving_log.csv'):
+    """
+    Helper function to read a csv file
+    """
     df = pd.read_csv(path)
     return df
 
 
 def steering_drop_condition(steering):
+    """
+    Defines the condition for dropping a frame
+    """
     return steering.values == 0.0
 
 
 def get_drop_indices(data, drop_condition, keep_count):
+    """
+    Returns indices that should be dropped
+    """
     all_indices = np.arange(len(data.values))
     indices = all_indices[drop_condition(data)]
     keep_count = len(indices) if keep_count >= len(indices) else keep_count
@@ -40,12 +49,18 @@ def get_drop_indices(data, drop_condition, keep_count):
 
 
 def drop(df):
+    """
+    Returns new data set info after dropping
+    """
     indices = get_drop_indices(df.steering, drop_condition=steering_drop_condition, keep_count=1000)
     df_dropped = df.drop(indices).reset_index()
     return df_dropped
 
 
 def load_data_set_log(path, dropping = True):
+    """
+    Loads the final data set log info
+    """
     data_set_log = read_csv_df(path=path)
     if(dropping): data_set_log = drop(data_set_log)
     return data_set_log
@@ -203,6 +218,9 @@ def nvidia_model(input_shape=(160, 320, 3), drop_out = 0.5, drop_out_sp = 0.2):
 
 
 def get_optimaizer(lr=0.001):
+    """
+    Returns an optimizer to reduce the loss.
+    """
     return Adam(lr=lr)
 
 
@@ -228,6 +246,9 @@ def train_model(model, model_name, X_train, y_train, loss='mse', lr=0.001, valid
     
     
 def produce_visualization(history_object, model_name):
+    """
+    Produce the MSE Loss vs diagram
+    """
     ### print the keys contained in the history object
     print(history_object.history.keys())
 
@@ -246,6 +267,9 @@ def produce_visualization(history_object, model_name):
 
 
 def plot_data_dist(steering, bins=25, labelx ='data', save=False, save_path = None):
+    """
+    Plots the steering data set distribution
+    """
     print(type(steering))
     steering.plot.hist(bins=bins)
     plt.xlabel(labelx)
