@@ -70,11 +70,11 @@ The goals / steps of this project are the following:
 
 My project includes the following files:
 
-- `model.py` containing the script to create and train the model
-- `helper.py` containing the functions for loading data, training, and saving the model
-- `drive.py` for driving the car in autonomous mode
-- `nvidia_model.h5` containing a trained convolution neural network based on NVidia architecture
-- `README.md` summarizing the results
+- [`model.py`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/model.py) containing the script to create and train the model
+- [`helper.py`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py) containing the functions for loading data, training, and saving the model
+- [`drive.py`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/drive.py) for driving the car in autonomous mode
+- [`nvidia_model.h5`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/nvidia_model.h5) containing a trained convolution neural network based on NVidia architecture
+- [`README.md`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/README.md) summarizing the results
 
 #### 2. Submission includes functional code
 
@@ -121,7 +121,7 @@ I used [NVIDIA architecture](http://images.nvidia.com/content/tegra/automotive/i
 | Dropout          | (None, 10)          | 0         |
 | Dense            | (None, 1)           | 11        |
 
-> Total number of parameters for this model is 981,819 and all of them need to be be trained. `nvidia_model()` in `helper.py` builds and returns this model.
+> Total number of parameters for this model is 981,819 and all of them need to be be trained. [`nvidia_model()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L185) in `helper.py` builds and returns this model.
 
 #### 2. Reduce overfitting in the model
 
@@ -131,7 +131,7 @@ The model was trained and validated on different data sets to ensure that the mo
 
 #### 3. Model parameter tuning
 
-The model used an `Adam()` optimizer with a learning rate equal to **0.001**. The number of `epochs` is **10** and the `batch_size` is **32**. I used `mse` as loss function and set `valid_split` to **0.2**.
+The model used an [`Adam()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L220) optimizer with a learning rate equal to **0.001**. The number of `epochs` is **10** and the `batch_size` is **32**. I used [`mse`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/model.py#L33) as loss function and set [`valid_split`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/model.py#L34) to **0.2**.
 
 #### 4. Appropriate training data
 
@@ -157,7 +157,7 @@ It meant the model was good (because of convergence diagram for training and val
 
 So, I dropped around 10,000 of them randomly (*below image - right*).  In this case the distribution of steering data set looks like a normal distribution around the 0 with a larger variance of steering lane angle. This helps to avoid over fitting the model around data set samples with a zero steering value.
 
-> Look at the `load_data_set_log()` and `drop()` functions in `helper.py`.
+> Look at the [`load_data_set_log()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L60) and [`drop()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L51) functions in `helper.py`.
 
 | Distribution of Steering for First Data Set | Distribution of Modified Data Set |
 | :--------------------------------------: | :-------------------------------: |
@@ -165,11 +165,11 @@ So, I dropped around 10,000 of them randomly (*below image - right*).  In this c
 
 Moreover, I didn't used every image even after dropping. For each frame there is **3 different version** for center, left, and right camera. I only used one out of three for each frame randomly. The chance of picking center-camera frame was **50 percent** and the other 2 frames **25** percent  each.
 
-> Look at `load_data_set()` in `helper.py`.
+> Look at [`load_data_set()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L93) in `helper.py`.
 
-If the left-camera frame or the right-camera frame is selected the steering lane angel must be adjusted. I randomly selected a number between `[0.20, 0.25]`. Then, I added it to and subtracted it from the steering value for the left and right frames respectively. In addition, I flipped the selected image to data set by **50%** chance to data set. To calculate steering angle for flipped frame I only multiplied the original frame's steering value by `-1.0`.
+If the left-camera frame or the right-camera frame is selected the steering lane angel must be adjusted. I randomly selected a number between [`[0.20, 0.25]`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L79) Then, I added it to and subtracted it from the steering value for the left and right frames respectively. In addition, I flipped the selected image to data set by **50%** chance to data set. To calculate steering angle for flipped frame I only multiplied the original frame's steering value by `-1.0`.
 
-> Look at `load_camera_data_set()` in `helper.py`.
+> Look at [`load_camera_data_set()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L69) in `helper.py`.
 
 I also increased the *epoch* from **7** to **10** and decreased *learning rate* from **0.01** to **0.001**.
 
@@ -177,7 +177,7 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 > **Note**
 >
-> There were multiple tries to find the best values. you can see them in `helper.ipynb` file.
+> There were multiple tries to find the best values. you can see them in [`helper.ipynb`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.ipynb) file.
 
 #### 2. Final Model Architecture
 
@@ -247,9 +247,33 @@ To augment the data set, I also flipped images thinking that this would be good 
 
 I Also drove the car in both direction on the rood (heading backward and forward).
 
-After the collection process, I had ~15,000 number of data points. I then preprocessed this data by  `cv2.flip()`  from `cv2` package randomly (50% chance). It added ~6,000 more samples to the data set as augmented data. I finally randomly shuffled the data set and put 20% of the data into a validation set. 
+After the collection process, I had ~15,000 number of data points. I then preprocessed this data by  [`cv2.flip()`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/helper.py#L87)  from `cv2` package randomly (50% chance). It added ~6,000 more samples to the data set as augmented data. I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 10 as evidenced by final MSE Loss diagrams (*above MSE LOSS diagram*). 
+
+### Recording and Building the Video 
+
+#### Recording Video in Autonomous Mode
+
+First, I recoded frames with the following commands using [`drive.py`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/drive.py):
+
+```sh
+python drive.py model.h5 run1
+```
+
+The fourth argument, `run1`, is the directory in which to save the images seen by the agent. If the directory already exists. 
+
+#### Using video.py
+
+Then, I generated a *60fps* video using [`video.py`](https://github.com/mhBahrami/CarND-Behavioral-Cloning-P3/blob/master/video.py):
+
+```sh
+python video.py run1
+```
+
+#### The video
+
+You can watch the built video [here](https://youtu.be/LbQUHrNF8T4).
 
 ## License
 
